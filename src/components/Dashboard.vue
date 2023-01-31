@@ -5,7 +5,7 @@
 <template>
   
 
- <div class="container content">
+ <div class="container">
  <div class="row">
     <div class="col-sm-4 xol-xs-12">
       <div class="card">
@@ -37,9 +37,7 @@
 </template>
 
 <style scoped>
-.content {
-padding-top: 90px;
-}
+
 .card {
 box-sizing: border-box;
 background: #FFFFFF;

@@ -1,11 +1,11 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
-import Auth from "./components/Auth.vue";
+import About from "./components/About.vue";
 import Dashboard from "./components/Dashboard.vue";
 
 export default createRouter({
     history: createWebHashHistory(),
     routes : [
-        { path: '/auth', component: Auth },
+        { path: '/about', component: About },
         { path: '/', component: Dashboard }
     ]
 });

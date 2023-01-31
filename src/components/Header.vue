@@ -26,7 +26,7 @@
   <div class="col-6 col-md-4">
     <ul class="nav col col-xs-12">
          <li><router-link to="/" class="nav-link px-2">Главная</router-link></li>
-        <li><router-link to="/auth" class="nav-link px-2">О проекте</router-link></li>
+        <li><router-link to="/about" class="nav-link px-2">О проекте</router-link></li>
       </ul>  
   </div>
   <div class="col-6 col-md-4 d-flex justify-content-end">
@@ -81,6 +81,7 @@ color: #FFFFFF;
 header {
 height: 112px;
 padding-top: 32px;
+margin-bottom: 72px;
 font-family: 'Montserrat';
 font-style: normal;
 font-weight: 500;
