@@ -55,6 +55,7 @@ box-shadow: 6px 6px 7px 3px rgba(46, 46, 46, 0.58);
 border-radius: 19px;
 padding: 20px;
 margin: 10px;
+cursor: pointer;
 }
 
 .img-card {
