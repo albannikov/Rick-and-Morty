@@ -16,14 +16,14 @@
     </div>
     <div class="col-sm-4 xol-xs-12">
       <div class="card">
-      <img class="img-card" src="../img/Anatomy_Park_7 1.jpg">
+      <img class="img-card" src="../img/Anatomy_Park_71.jpg">
       <h1>Локации</h1>
       <span class="description">Исследуй все локации. Давай же, не будь занудой!</span>      
       </div>
     </div>
     <div class="col-sm-4 xol-xs-12">
       <div class="card">
-      <img class="img-card" src="../img/rick-and-morty 1.jpg">
+      <img class="img-card" src="../img/rick-and-morty1.jpg">
       <h1>Эпизоды</h1>
       <span class="description">Узнай чуть больше о карте приключений Рика и Морти</span>      
       </div>
