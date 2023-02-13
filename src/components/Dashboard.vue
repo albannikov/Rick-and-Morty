@@ -1,9 +1,26 @@
 <script>
 
+import ModalWindow from './modal-reg.vue'
+ 
+ export default {
+     name: 'App',
+     components: {
+         ModalWindow
+     },
+     methods: {
+         showModal: function () {
+             this.$refs.modal.show = true
+         }
+     },
+ }
+
 </script>
 
 <template>
   
+  <button сlass="show-modal-button" @click="showModal">Показать модальное окно</button>
+ 
+ <modal-window ref="modal"></modal-window>
 
  <div class="container">
  <div class="row">
@@ -30,6 +47,7 @@
     </div>
   </div>
 </div>
+
 
 
 

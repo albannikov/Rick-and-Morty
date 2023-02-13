@@ -1,17 +1,7 @@
 <script>
  import ModalWindow from './modal-reg.vue';
 
- export default {
-     name: 'App',
-     components: {
-         ModalWindow
-     },
-     methods: {
-         showModal: function () {
-             this.$refs.modal.show = true
-         }
-     },
- }
+
 
 </script>
 
@@ -30,17 +20,14 @@
       </ul>  
   </div>
   <div class="col-6 col-md-4 d-flex justify-content-end">
-    <button class="btn-reg show-modal-button" @click="showModal">Регистрация</button> 
-    <button class="btn-enter show-modal-button" @click="showModal">Вход</button> 
+    <button class="btn-reg" @click="showModal">Регистрация</button> 
+    <button class="btn-enter" @click="showModal">Вход</button> 
   </div>
   </div>
 </div>
 
 
 
- 
-
- <modal-window ref="modal"></modal-window>
 </header>
 
   

@@ -12,6 +12,7 @@
     "bootstrap": "^5.2.3",
     "cors": "^2.8.5",
     "cross-fetch": "^3.1.5",
+    "daisyui": "^2.49.0",
     "express": "^4.18.2",
     "express-session": "^1.17.3",
     "mysql": "^2.18.1",
@@ -20,10 +21,15 @@
     "passport-local": "^1.0.0",
     "safe-buffer": "^5.2.1",
     "session-file-store": "^1.5.0",
+    "usemodal-vue3": "^0.3.7",
     "vue": "^3.2.45",
-    "vue-router": "^4.1.6"
+    "vue-modaltor": "^1.5.4",
+    "vue-router": "^4.1.6",
+    "vuejs-confirm-dialog": "^0.5.0",
+    "vuetify": "^3.1.2"
   },
   "devDependencies": {
+    "@nuxtjs/vuetify": "^1.12.3",
     "@vitejs/plugin-vue": "^4.0.0",
     "node-sass": "^8.0.0",
     "sass": "^1.57.1",
