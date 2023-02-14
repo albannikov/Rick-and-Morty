@@ -1,8 +1,20 @@
 <script>
- import ModalWindow from './modal-reg.vue';
+import ModalWindow from './modal-window.vue' 
 
-
-
+export default {
+    name: 'App',
+    components: {
+        ModalWindow         
+    },
+    methods: {
+        showModalReg: function () {
+            this.$refs.modalreg.show = true
+        },
+        showModalTwo: function () {
+            this.$refs.modalenter.show = true
+          }
+    },
+}
 </script>
 
 <template>
@@ -19,9 +31,57 @@
         <li><router-link to="/about" class="nav-link px-2">О проекте</router-link></li>
       </ul>  
   </div>
-  <div class="col-6 col-md-4 d-flex justify-content-end">
-    <button class="btn-reg" @click="showModal">Регистрация</button> 
-    <button class="btn-enter" @click="showModal">Вход</button> 
+  <div class="col-6 col-md-4 d-flex justify-content-end"> 
+
+  <button class="btn-reg" @click="showModalReg">Регистрация</button> 
+  <button class="btn-enter" @click="showModalTwo">Вход</button>
+
+  <!-- Реистрация  -->
+  <modal-window ref="modalreg">
+    <template v-slot:body>
+            <div class="login">
+              <form name='form-login'>
+                <h2>Регистрация</h2>
+                  <input readonly onfocus="this.removeAttribute('readonly');" class="input" type="email" id="email" placeholder="Введите Email" required>
+                  <input readonly onfocus="this.removeAttribute('readonly');" class="input" type="text" id="login" placeholder="Придумайте логин" required>
+                  <input readonly onfocus="this.removeAttribute('readonly');" class="input" type="text" id="name" placeholder="Введите имя" required>
+                  <input readonly onfocus="this.removeAttribute('readonly');" class="input" type="text" id="surname" placeholder="Введите фамилию" required>     
+                  <input readonly onfocus="this.removeAttribute('readonly');" class="input" type="password" id="pass" placeholder="Ведите пароль" required>
+                  <input readonly onfocus="this.removeAttribute('readonly');" class="input" type="password" id="pass_retry" placeholder="Ведите пароль" required>
+                  <input class="rgstr_btn" id="rgstr_btn" type="submit" value="Зарегистрировать" onclick="store()">
+              </form>
+           </div>
+      </template>
+  </modal-window>
+ <!-- Реистрация  -->
+
+ <!-- Вход  -->
+  <modal-window ref="modalenter">      
+            <template v-slot:body>
+                <div class="login">
+                    <form name='form-login'>
+                        <h2>Вход</h2>
+                        <label for="userName">Email</label>
+                        <input type="email" id="userName" placeholder="Username" required>
+
+                        <label for="userPw">Password</label>
+                        <input type="password" id= "userPw" placeholder="Password" required>
+
+                        <div id="remember">
+                            <input type="checkbox" value="lsRememberMe" id="rememberMe"
+                                  style="display: inline-block;">
+                            <label>Remember me</label>
+                        </div>
+                        <input id= "login_btn" type="submit" value="Login" onclick="check()">
+                    </form>
+                </div>
+            </template>        
+        </modal-window>
+<!-- Вход  -->
+
+
+
+
   </div>
   </div>
 </div>
@@ -36,6 +96,49 @@
 
 <style scoped>
 
+.rgstr_btn {
+background: #000000;
+border-radius: 5px;
+width: 236px;
+height: 49px;
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 500;
+font-size: 18px;
+line-height: 22px;
+color: #FFFFFF;
+text-align: center;
+margin-top: 40px;
+}
+
+input::placeholder {
+  font-family: 'Montserrat';
+font-style: bold;
+font-weight: 500;
+padding: 10px;
+font-size: 12px;
+color: #686868;
+
+}
+
+h2 { 
+text-align: center;
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 500;
+line-height: 59px;
+color: #000000;  
+}
+
+.input {
+width: 100%;
+height: 36px;
+background: rgba(162, 162, 162, 0.1);
+border: 1px solid rgba(162, 162, 162, 0.6);
+border-radius: 5px;
+margin-top: 35px;
+padding-bottom: 5px;
+}
 .btn-reg {
 box-sizing: border-box;
 width: 188px;
