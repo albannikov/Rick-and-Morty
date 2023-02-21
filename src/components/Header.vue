@@ -2,24 +2,47 @@
 import ModalWindow from './modal-window.vue' 
 
 export default {
-    name: 'App',
+    name: 'App',  
     components: {
         ModalWindow         
     },
     methods: {
         showModalReg: function () {
-            this.$refs.modalreg.show = true
+            this.$refs.modalreg.show = true  
         },
         showModalTwo: function () {
             this.$refs.modalenter.show = true
-          }
+          },
+        userName(){
+          if (localStorage.getItem('authStatus') && localStorage.getItem('name') && localStorage.getItem('surname')) {
+            let userName = localStorage.getItem('name') + " " + localStorage.getItem('surname').split('')[0] + ".";
+          return userName;
+        } else {return 0}
+        }
     },
 }
+
+// function status() {
+//   let authStatus = localStorage.getItem('authStatus');
+//   if (authStatus == "true" && localStorage.getItem('name') && localStorage.getItem('surname')) {    
+//     let DisplayName = localStorage.getItem('name') + " " + localStorage.getItem('surname').split('')[0] + ".";
+//     console.log(DisplayName);
+//   }
+// }
+// status();
+
 </script>
+
+
 
 <template>
 <!-- Header -->
-<header>
+<header>  
+<!-- {{ status }} -->
+<!-- {{ userName() }}
+{{ userSurname() }} -->
+
+
 <div class="container">
   <div class="row d-flex align-items-center">
   <div class="col-6 col-md-2"> 
@@ -32,7 +55,7 @@ export default {
       </ul>  
   </div>
   <div class="col-6 col-md-4 d-flex justify-content-end"> 
-
+  <div v-if="userName()">{{ userName() }}</div>
   <button class="btn-reg" @click="showModalReg">Регистрация</button> 
   <button class="btn-enter" @click="showModalTwo">Вход</button>
 

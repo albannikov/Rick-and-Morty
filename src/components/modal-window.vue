@@ -69,22 +69,21 @@ if(email.value.length == 0){
 window.check = function(){
 let storedLogin = localStorage.getItem('login');
 let storedPass = localStorage.getItem('pass');
-
 let userName = document.getElementById('userName');
 let userPw = document.getElementById('userPw');
-
 let userRemember = "";
 
 
-console.log(userRemember);
 
 //Если успешно
 if(userName.value == storedLogin && userPw.value == storedPass){
     localStorage.setItem('authStatus', true);
     document.getElementById("modal-shadow").hidden = true; 
-    document.getElementById("modal").hidden = true;  
-    toaster.success('Вы успешно авторизовались', {position:"bottom-right", duration: 4000});  
-    if (document.getElementById("rememberMe").checked == true) {userRemember = "RememberMe"} else {userRemember = "NotRememberMe"}
+    document.getElementById("modal").hidden = true;      
+    toaster.success('Вы успешно авторизовались', {position:"bottom-right", duration: 4000});          
+        if (document.getElementById("rememberMe").checked == true) {
+            localStorage.setItem('remember', "yes");} 
+            else { localStorage.setItem('remember', "no");}   
 }else{
     toaster.error('Укажите корректные данные для входа', {position:"bottom-right", duration: 4000});
 }
