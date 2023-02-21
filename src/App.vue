@@ -1,5 +1,4 @@
 <script>
-
  import header from './components/Header.vue';
 
  export default {
@@ -8,8 +7,6 @@
       'webapp-header': header
      },    
  }
-
-
 </script>
 
 

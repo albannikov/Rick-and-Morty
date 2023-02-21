@@ -22,10 +22,10 @@ export default {
 <header>
 <div class="container">
   <div class="row d-flex align-items-center">
-  <div class="col-6 col-md-4"> 
+  <div class="col-6 col-md-2"> 
     <a href="/"><img src="../img/logo.png" class="logo"></a>
   </div>
-  <div class="col-6 col-md-4">
+  <div class="col-6 col-md-6">
     <ul class="nav col col-xs-12">
          <li><router-link to="/" class="nav-link px-2">Главная</router-link></li>
         <li><router-link to="/about" class="nav-link px-2">О проекте</router-link></li>
@@ -61,36 +61,26 @@ export default {
                 <div class="login">
                     <form name='form-login'>
                         <h2>Вход</h2>
-                        <label for="userName">Email</label>
-                        <input type="email" id="userName" placeholder="Username" required>
+                        
+                        <input readonly onfocus="this.removeAttribute('readonly');" type="text" id="userName" class="input" placeholder="Введите логин или E-mail" required>                        
+                        <input readonly onfocus="this.removeAttribute('readonly');" type="password" id= "userPw" class="input" placeholder="Введите пароль" required>
 
-                        <label for="userPw">Password</label>
-                        <input type="password" id= "userPw" placeholder="Password" required>
-
-                        <div id="remember">
+                        <div id="remember" class="remember">
                             <input type="checkbox" value="lsRememberMe" id="rememberMe"
                                   style="display: inline-block;">
-                            <label>Remember me</label>
+                            <label>Запомнить</label>
                         </div>
-                        <input id= "login_btn" type="submit" value="Login" onclick="check()">
+                        <input class="rgstr_btn" id= "login_btn" type="submit" value="Войти" onclick="check()">
                     </form>
                 </div>
             </template>        
         </modal-window>
 <!-- Вход  -->
 
-
-
-
   </div>
   </div>
 </div>
-
-
-
-</header>
-
-  
+</header>  
  <!-- Header --> 
 </template>
 
@@ -112,7 +102,7 @@ margin-top: 40px;
 }
 
 input::placeholder {
-  font-family: 'Montserrat';
+font-family: 'Montserrat';
 font-style: bold;
 font-weight: 500;
 padding: 10px;
@@ -121,12 +111,16 @@ color: #686868;
 
 }
 
+label {
+margin-left: 10px;
+}
+
 h2 { 
 text-align: center;
 font-family: 'Montserrat';
 font-style: normal;
 font-weight: 500;
-line-height: 59px;
+line-height: 48px;
 color: #000000;  
 }
 
@@ -139,6 +133,15 @@ border-radius: 5px;
 margin-top: 35px;
 padding-bottom: 5px;
 }
+.remember {
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 500;
+color: #000000;
+text-align: left;
+margin-top: 30px;
+}
+
 .btn-reg {
 box-sizing: border-box;
 width: 188px;
