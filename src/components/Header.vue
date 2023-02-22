@@ -1,5 +1,7 @@
 <script>
 import ModalWindow from './modal-window.vue' 
+import { createToaster } from "@meforma/vue-toaster";
+const toaster = createToaster({ /* options */ });
 
 export default {
     name: 'App',  
@@ -18,19 +20,78 @@ export default {
             let userName = localStorage.getItem('name') + " " + localStorage.getItem('surname').split('')[0] + ".";
           return userName;
         } else {return 0}
-        }
-    },
-}
+        },
+        userLogout() {
+          localStorage.removeItem('authStatus');
+          this.$forceUpdate(); 
+        },
+        check () {
+          //Авторизация
+          let storedLogin = localStorage.getItem('login');
+          let storedPass = localStorage.getItem('pass');
+          let userName = document.getElementById('userName');
+          let userPw = document.getElementById('userPw');
+          let userRemember = "";          
+          if(userName.value == storedLogin && userPw.value == storedPass){
+              localStorage.setItem('authStatus', true);
+              document.getElementById("modal-shadow").hidden = true; 
+              document.getElementById("modal").hidden = true;        
+              toaster.success('Вы успешно авторизовались', {position:"bottom-right", duration: 4000});       
+              this.$forceUpdate();  
+                  if (document.getElementById("rememberMe").checked == true) {
+                      localStorage.setItem('remember', "yes");} 
+                      else { localStorage.setItem('remember', "no");}   
+          }else{
+              toaster.error('Укажите корректные данные для входа', {position:"bottom-right", duration: 4000});
+          }
+          },
+          //Регистрация
+          store(){
+          let email = document.getElementById('email');
+          let login = document.getElementById('login');
+          let name = document.getElementById('name');
+          let surname = document.getElementById('surname');
+          let pass = document.getElementById('pass');
+          let pass_retry = document.getElementById('pass_retry');
+          let lowerCaseLetters = /[a-z]/g;
+          let upperCaseLetters = /[A-Z]/g;
+          let numbers = /[0-9]/g;
 
-// function status() {
-//   let authStatus = localStorage.getItem('authStatus');
-//   if (authStatus == "true" && localStorage.getItem('name') && localStorage.getItem('surname')) {    
-//     let DisplayName = localStorage.getItem('name') + " " + localStorage.getItem('surname').split('')[0] + ".";
-//     console.log(DisplayName);
-//   }
-// }
-// status();
+          if(email.value.length == 0){
+              toaster.error('Заполните поле email', {position:"bottom-right", duration: 4000});
 
+          }else if(pass.value.length == 0){
+              toaster.error('Введите пароль', {position:"bottom-right", duration: 4000});
+
+          }else if(pass.value.length < 6 || pass.value.length > 50){
+              toaster.error('Пароль может быть от 6 до 50 символов', {position:"bottom-right", duration: 4000});
+
+          }else if(!pass.value.match(numbers)){
+              toaster.error('Пароль должен содержать цифры', {position:"bottom-right", duration: 4000});
+
+          }else if(!pass.value.match(upperCaseLetters)){
+              toaster.error('Пароль должен содержать латинские символы верхнего регистра', {position:"bottom-right", duration: 4000});
+
+          }else if(!pass.value.match(lowerCaseLetters)){
+              toaster.error('Пароль должен содержать латинские символы нижнего регистра', {position:"bottom-right", duration: 4000});
+
+          } else if (pass.value != pass_retry.value) {
+              toaster.error('Пароли не совпадают', {position:"bottom-right", duration: 4000});
+
+          }else{  
+              localStorage.setItem('email', email.value);
+              localStorage.setItem('login', login.value);
+              localStorage.setItem('name', name.value);
+              localStorage.setItem('surname', surname.value);
+              localStorage.setItem('pass', pass.value);
+              
+              document.getElementById("modal-shadow").hidden = true; 
+              document.getElementById("modal").hidden = true;     
+              toaster.success('Пользователь успешно зарегистрирован', {position:"bottom-right", duration: 4000});              
+          }
+          }
+      }
+  }
 </script>
 
 
@@ -38,11 +99,6 @@ export default {
 <template>
 <!-- Header -->
 <header>  
-<!-- {{ status }} -->
-<!-- {{ userName() }}
-{{ userSurname() }} -->
-
-
 <div class="container">
   <div class="row d-flex align-items-center">
   <div class="col-6 col-md-2"> 
@@ -52,13 +108,19 @@ export default {
     <ul class="nav col col-xs-12">
          <li><router-link to="/" class="nav-link px-2">Главная</router-link></li>
         <li><router-link to="/about" class="nav-link px-2">О проекте</router-link></li>
-      </ul>  
+       </ul>  
   </div>
   <div class="col-6 col-md-4 d-flex justify-content-end"> 
-  <div v-if="userName()">{{ userName() }}</div>
+  <!-- Если авторизован  -->
+  <div v-if="userName()">  
+    {{ userName() }}
+    <button class="btn-exit" @click="userLogout">Выйти</button>
+  </div>
+  <!-- Если не авторизован  -->
+  <div v-else>
   <button class="btn-reg" @click="showModalReg">Регистрация</button> 
   <button class="btn-enter" @click="showModalTwo">Вход</button>
-
+</div>
   <!-- Реистрация  -->
   <modal-window ref="modalreg">
     <template v-slot:body>
@@ -93,7 +155,7 @@ export default {
                                   style="display: inline-block;">
                             <label>Запомнить</label>
                         </div>
-                        <input class="rgstr_btn" id= "login_btn" type="submit" value="Войти" onclick="check()">
+                        <input class="rgstr_btn" id= "login_btn" type="submit" value="Войти" @click="check">
                     </form>
                 </div>
             </template>        
@@ -133,6 +195,8 @@ font-size: 12px;
 color: #686868;
 
 }
+
+
 
 label {
 margin-left: 10px;
@@ -181,6 +245,24 @@ color: #000000;
 margin-right: 30px;
 }
 
+.btn-exit {
+  box-sizing: border-box;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-left: 10px;
+  height: 49px;
+  background: #FFFFFF;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  color: #000000;
+  margin-right: 30px;
+}
+
 .btn-enter {
 background: #000000;
 border-radius: 5px;
@@ -192,6 +274,7 @@ font-weight: 500;
 font-size: 18px;
 line-height: 22px;
 color: #FFFFFF;
+margin-left: 10px;
 }
 
 header {

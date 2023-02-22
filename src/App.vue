@@ -14,9 +14,8 @@
 
 
 <webapp-header />
-
 <router-view></router-view>  
-  Футер
+
 </template>
 
 <style scoped>

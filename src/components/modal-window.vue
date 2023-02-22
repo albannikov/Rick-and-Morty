@@ -3,8 +3,6 @@
 import { createToaster } from "@meforma/vue-toaster";
 const toaster = createToaster({ /* options */ });
 
-
-//Модалка
 export default {
     name: "ModalWindow",
     data: function () {
@@ -18,76 +16,53 @@ export default {
         }
     }
 }
-//Регистрация
-window.store = function(){
+// //Регистрация
+// window.store = function(){
 
-let email = document.getElementById('email');
-let login = document.getElementById('login');
-let name = document.getElementById('name');
-let surname = document.getElementById('surname');
-let pass = document.getElementById('pass');
-let pass_retry = document.getElementById('pass_retry');
-let lowerCaseLetters = /[a-z]/g;
-let upperCaseLetters = /[A-Z]/g;
-let numbers = /[0-9]/g;
+// let email = document.getElementById('email');
+// let login = document.getElementById('login');
+// let name = document.getElementById('name');
+// let surname = document.getElementById('surname');
+// let pass = document.getElementById('pass');
+// let pass_retry = document.getElementById('pass_retry');
+// let lowerCaseLetters = /[a-z]/g;
+// let upperCaseLetters = /[A-Z]/g;
+// let numbers = /[0-9]/g;
 
-if(email.value.length == 0){
-    toaster.error('Заполните поле email', {position:"bottom-right", duration: 4000});
+// if(email.value.length == 0){
+//     toaster.error('Заполните поле email', {position:"bottom-right", duration: 4000});
 
-}else if(pass.value.length == 0){
-    toaster.error('Введите пароль', {position:"bottom-right", duration: 4000});
+// }else if(pass.value.length == 0){
+//     toaster.error('Введите пароль', {position:"bottom-right", duration: 4000});
 
-}else if(pass.value.length < 6 || pass.value.length > 50){
-    toaster.error('Пароль может быть от 6 до 50 символов', {position:"bottom-right", duration: 4000});
+// }else if(pass.value.length < 6 || pass.value.length > 50){
+//     toaster.error('Пароль может быть от 6 до 50 символов', {position:"bottom-right", duration: 4000});
 
-}else if(!pass.value.match(numbers)){
-    toaster.error('Пароль должен содержать цифры', {position:"bottom-right", duration: 4000});
+// }else if(!pass.value.match(numbers)){
+//     toaster.error('Пароль должен содержать цифры', {position:"bottom-right", duration: 4000});
 
-}else if(!pass.value.match(upperCaseLetters)){
-    toaster.error('Пароль должен содержать латинские символы верхнего регистра', {position:"bottom-right", duration: 4000});
+// }else if(!pass.value.match(upperCaseLetters)){
+//     toaster.error('Пароль должен содержать латинские символы верхнего регистра', {position:"bottom-right", duration: 4000});
 
-}else if(!pass.value.match(lowerCaseLetters)){
-    toaster.error('Пароль должен содержать латинские символы нижнего регистра', {position:"bottom-right", duration: 4000});
+// }else if(!pass.value.match(lowerCaseLetters)){
+//     toaster.error('Пароль должен содержать латинские символы нижнего регистра', {position:"bottom-right", duration: 4000});
 
-} else if (pass.value != pass_retry.value) {
-    toaster.error('Пароли не совпадают', {position:"bottom-right", duration: 4000});
+// } else if (pass.value != pass_retry.value) {
+//     toaster.error('Пароли не совпадают', {position:"bottom-right", duration: 4000});
 
-}else{  //Если все проверки успешны
-    localStorage.setItem('email', email.value);
-    localStorage.setItem('login', login.value);
-    localStorage.setItem('name', name.value);
-    localStorage.setItem('surname', surname.value);
-    localStorage.setItem('pass', pass.value);
+// }else{  //Если все проверки успешны
+//     localStorage.setItem('email', email.value);
+//     localStorage.setItem('login', login.value);
+//     localStorage.setItem('name', name.value);
+//     localStorage.setItem('surname', surname.value);
+//     localStorage.setItem('pass', pass.value);
     
-    document.getElementById("modal-shadow").hidden = true; 
-    document.getElementById("modal").hidden = true;     
-    toaster.success('Пользователь успешно зарегистрирован', {position:"bottom-right", duration: 4000});
-}
-}
-
-//Вход
-window.check = function(){
-let storedLogin = localStorage.getItem('login');
-let storedPass = localStorage.getItem('pass');
-let userName = document.getElementById('userName');
-let userPw = document.getElementById('userPw');
-let userRemember = "";
-
-
-
-//Если успешно
-if(userName.value == storedLogin && userPw.value == storedPass){
-    localStorage.setItem('authStatus', true);
-    document.getElementById("modal-shadow").hidden = true; 
-    document.getElementById("modal").hidden = true;      
-    toaster.success('Вы успешно авторизовались', {position:"bottom-right", duration: 4000});          
-        if (document.getElementById("rememberMe").checked == true) {
-            localStorage.setItem('remember', "yes");} 
-            else { localStorage.setItem('remember', "no");}   
-}else{
-    toaster.error('Укажите корректные данные для входа', {position:"bottom-right", duration: 4000});
-}
-}
+//     document.getElementById("modal-shadow").hidden = true; 
+//     document.getElementById("modal").hidden = true;     
+//     toaster.success('Пользователь успешно зарегистрирован', {position:"bottom-right", duration: 4000});
+    
+// }
+// }
 </script>
 
 
