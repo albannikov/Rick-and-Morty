@@ -1,5 +1,5 @@
-<script>
- 
+<script setup>
+
 </script>
 
 <template>
@@ -7,11 +7,13 @@
  <div class="container">
  <div class="row">
     <div class="col-sm-4 xol-xs-12">
-      <div class="card">
-      <img class="img-card" src="../img/N4513.jpg">
-      <h1>Персонажи</h1>
-      <span class="description">Зайди и познакомься со всеми персонажами вселенной</span>      
-      </div>
+      <router-link to="/characters">
+          <div class="card">        
+          <img class="img-card" src="../img/N4513.jpg">
+          <h1>Персонажи</h1>
+          <span class="description">Зайди и познакомься со всеми персонажами вселенной</span>      
+          </div>
+      </router-link>
     </div>
     <div class="col-sm-4 xol-xs-12">
       <div class="card">
@@ -37,6 +39,9 @@
 </template>
 
 <style scoped>
+a {
+  text-decoration: none;
+}
 
 .card {
 box-sizing: border-box;

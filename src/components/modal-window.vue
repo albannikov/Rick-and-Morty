@@ -16,58 +16,10 @@ export default {
         }
     }
 }
-// //Регистрация
-// window.store = function(){
-
-// let email = document.getElementById('email');
-// let login = document.getElementById('login');
-// let name = document.getElementById('name');
-// let surname = document.getElementById('surname');
-// let pass = document.getElementById('pass');
-// let pass_retry = document.getElementById('pass_retry');
-// let lowerCaseLetters = /[a-z]/g;
-// let upperCaseLetters = /[A-Z]/g;
-// let numbers = /[0-9]/g;
-
-// if(email.value.length == 0){
-//     toaster.error('Заполните поле email', {position:"bottom-right", duration: 4000});
-
-// }else if(pass.value.length == 0){
-//     toaster.error('Введите пароль', {position:"bottom-right", duration: 4000});
-
-// }else if(pass.value.length < 6 || pass.value.length > 50){
-//     toaster.error('Пароль может быть от 6 до 50 символов', {position:"bottom-right", duration: 4000});
-
-// }else if(!pass.value.match(numbers)){
-//     toaster.error('Пароль должен содержать цифры', {position:"bottom-right", duration: 4000});
-
-// }else if(!pass.value.match(upperCaseLetters)){
-//     toaster.error('Пароль должен содержать латинские символы верхнего регистра', {position:"bottom-right", duration: 4000});
-
-// }else if(!pass.value.match(lowerCaseLetters)){
-//     toaster.error('Пароль должен содержать латинские символы нижнего регистра', {position:"bottom-right", duration: 4000});
-
-// } else if (pass.value != pass_retry.value) {
-//     toaster.error('Пароли не совпадают', {position:"bottom-right", duration: 4000});
-
-// }else{  //Если все проверки успешны
-//     localStorage.setItem('email', email.value);
-//     localStorage.setItem('login', login.value);
-//     localStorage.setItem('name', name.value);
-//     localStorage.setItem('surname', surname.value);
-//     localStorage.setItem('pass', pass.value);
-    
-//     document.getElementById("modal-shadow").hidden = true; 
-//     document.getElementById("modal").hidden = true;     
-//     toaster.success('Пользователь успешно зарегистрирован', {position:"bottom-right", duration: 4000});
-    
-// }
-// }
 </script>
 
 
-<template>
-  
+<template>  
  <div id="modal-shadow" v-if="show" class="modal-shadow" @click.self="closeModal">
     <img class="image8" src="../img/image8.png"> 
     <img class="image9" src="../img/image9.png"> 

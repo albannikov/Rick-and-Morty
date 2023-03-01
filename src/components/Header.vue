@@ -22,17 +22,18 @@ export default {
         } else {return 0}
         },
         userLogout() {
-          localStorage.removeItem('authStatus');
+          localStorage.removeItem('authStatus');          
           this.$forceUpdate(); 
         },
         check () {
           //Авторизация
           let storedLogin = localStorage.getItem('login');
+          let storedMail = localStorage.getItem('email');
           let storedPass = localStorage.getItem('pass');
           let userName = document.getElementById('userName');
           let userPw = document.getElementById('userPw');
           let userRemember = "";          
-          if(userName.value == storedLogin && userPw.value == storedPass){
+          if(userName.value == storedLogin || userName.value == storedMail && userPw.value == storedPass){
               localStorage.setItem('authStatus', true);
               document.getElementById("modal-shadow").hidden = true; 
               document.getElementById("modal").hidden = true;        
@@ -90,6 +91,8 @@ export default {
               toaster.success('Пользователь успешно зарегистрирован', {position:"bottom-right", duration: 4000});              
           }
           }
+          
+                 
       }
   }
 </script>
